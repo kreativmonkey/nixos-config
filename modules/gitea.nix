@@ -73,21 +73,9 @@ services.gitea={
     };
 };
 
-services.mysql = {    
-    enable = true;
-
-    # Ensure the database, user, and permissions always exist
-    ensureDatabases = [ dbName ];
-    ensureUsers = [
-     { name = dbUser;
-       ensurePermissions = { "${dbName}.*" = "ALL PRIVILEGES"; };
-     }
-    ];
+systemd.services."gitea-dump" = {
+    requires = ["mysql.service"];
+    after = ["mysql.service"];
 };
-
-#systemd.services."gitea-setup" = {
-#    requires = ["postgresql.service"];
-#    after = ["postgresql.service"];
-#};
 
 }
