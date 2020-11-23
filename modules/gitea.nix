@@ -8,74 +8,74 @@ let
 in
 {
 
-# Setup reverse proxy with nginx
-services.nginx = {
-    enable = true;
+    # Setup reverse proxy with nginx
+    services.nginx = {
+        enable = true;
 
-    # Use recommended settings
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+        # Use recommended settings
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+        recommendedProxySettings = true;
+        recommendedTlsSettings = true;
 
-    # Only allow PFS-enabled ciphers with AES256
-    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+        # Only allow PFS-enabled ciphers with AES256
+        sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
-    # Setup Nextcloud virtual host to listen on ports
-    virtualHosts."${hostname}" = {
-        ## Force HTTP redirect to HTTPS
-        forceSSL = true;
-        ## LetsEncrypt
-        enableACME = true;
+        # Setup Nextcloud virtual host to listen on ports
+        virtualHosts."${hostname}" = {
+            ## Force HTTP redirect to HTTPS
+            forceSSL = true;
+            ## LetsEncrypt
+            enableACME = true;
 
-        locations."/" = {
-            proxyPass = "http://localhost:3000";
+            locations."/" = {
+                proxyPass = "http://localhost:3000";
+            };
         };
     };
-};
 
-services.gitea={
-    enable = true;
-
-    appName = "Private Git Base";
-    rootUrl = "http://localhost:3000/";
-    user = "gitea";
-    httpPort = 3000;
-    log.level = "Warn";
-    disableRegistration = false;
-
-    #stateDir = "var/lib/gitea";
-    useWizard = false;
-    domain = "https://${hostname}";
-
-    database = {
-        host = "localhost";
-        name = dbName;
-        user = dbUser;
-        #path = "/whatever";
-        port = 3306;
-        type = "mysql";
-        passwordFile = dbpassFile;
-    };
-
-    # Enable a timer that runs gitea dump to generate backup-files of the current database and repositorys.
-    dump = {
+    services.gitea={
         enable = true;
-        backupDir = "/var/src/backup/gitea";
-        # Run a gitea dump at this interval. Runs by default at 04:31 every day. The format is described in systemd.time 7.
-        interval = "05:31";
-    };
-    ssh = {
-        enable = true;
-        # SSH port displayed in clone URL. The option is required to configure a service when the external 
-        # visible port differs from the local listening port i.e. if port forwarding is used. 
-        clonePort = 2222;
-    };
-};
 
-systemd.services."gitea-dump" = {
-    requires = ["mysql.service"];
-    after = ["mysql.service"];
-};
+        appName = "Private Git Base";
+        rootUrl = "http://localhost:3000/";
+        user = "gitea";
+        httpPort = 3000;
+        log.level = "Warn";
+        disableRegistration = false;
+
+        #stateDir = "var/lib/gitea";
+        useWizard = false;
+        domain = "https://${hostname}";
+
+        database = {
+            host = "localhost";
+            name = dbName;
+            user = dbUser;
+            #path = "/whatever";
+            port = 3306;
+            type = "mysql";
+            passwordFile = dbpassFile;
+        };
+
+        # Enable a timer that runs gitea dump to generate backup-files of the current database and repositorys.
+        dump = {
+            enable = true;
+            backupDir = "/var/src/backup/gitea";
+            # Run a gitea dump at this interval. Runs by default at 04:31 every day. The format is described in systemd.time 7.
+            interval = "05:31";
+        };
+        ssh = {
+            enable = true;
+            # SSH port displayed in clone URL. The option is required to configure a service when the external 
+            # visible port differs from the local listening port i.e. if port forwarding is used. 
+            clonePort = 2222;
+        };
+    };
+
+    systemd.services."gitea-dump" = {
+        requires = ["mysql.service"];
+        after = ["mysql.service"];
+    };
 
 }
