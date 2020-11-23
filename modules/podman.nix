@@ -5,5 +5,8 @@
         dockerCompat = true;
     };
 
-    
+    environment.systemPackages = with pkgs; [
+        podman-compose
+    ];
+
 }
