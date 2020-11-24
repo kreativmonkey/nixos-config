@@ -1,4 +1,4 @@
-{ ... }:
+{ config, pkgs, ... }:
 {
     # collection of modules that are used on every Server configuration
     imports = [
@@ -36,6 +36,6 @@
         curl
         tmux
         unzip
-    ] ++ basePackages;
+    ];
 
-}/1d5a79fb8149a9478e200c95da626184/raw/c0862b2c7faad630b83ea7b9180a5bdda1197321/Nixos-Install-Github-Configuration
+}
