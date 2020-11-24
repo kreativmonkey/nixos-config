@@ -1,40 +1,33 @@
-    { ... }:
-    {
-      imports = [
+{ ... }:
+{
+  imports = [
+    # device specific hardware configuration
+    ./hardware-configuration.nix
 
-        # device specific hardware configuration
-        ./hardware-configuration.nix
 
-        # the "default" emile user
-        ../../users/emile.nix
+    # device specific hardware configuration
+    ./users/sebastian.nix
+    #./machines/anarchy.nix
+    #./machines/bulido.nix
+  ];
 
-        # import the collection of modules suited for laptops
-        ../../roles/laptop.nix
+  # Use the GRUB 2 boot loader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Define on which hard drive you want to install Grub.
+  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-        # machine specific modules
-        ./modules/boot.nix
-        ./modules/env.nix
-        ./modules/filesystem.nix
-        ./modules/firewall.nix
-        ./modules/hardware.nix 
-        ./modules/internationalisation.nix
-        ./modules/networking.nix
-        ./modules/nix.nix
-        ./modules/pkgs.nix
-        ./modules/power.nix
-        ./modules/programs.nix
-        ./modules/services.nix
-        ./modules/time.nix
-        ./modules/wireguard.nix
-        ./modules/netdata.nix
-        ./modules/location.nix
-      ];
 
-      #hardware.cpu.intel.updateMicrocode = true;
+  # Set your time zone.
+  time.timeZone = "Europa/Berlin";
 
-      # This value determines the NixOS release with which your system is to be
-      # compatible, in order to avoid breaking some software such as database
-      # servers. You should change this only after NixOS release notes say you
-      # should.
-      system.stateVersion = "20.03"; # Did you read the comment?
-    }
+  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated config
+  # replicates the default behaviour.
+  networking.useDHCP = false;
+  networking.interfaces.ens3.useDHCP = true;
+
+}
