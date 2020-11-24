@@ -3,13 +3,13 @@
   imports = [
 
     # device specific hardware configuration
-    #./hardware-configuration.nix
+    ../hardware-configuration.nix
 
     # the "default" emile user
-    ./users/sebastian.nix
+    ../users/sebastian.nix
 
     # import the collection of modules suited for laptops
-    ./roles/server.nix
+    ../roles/server.nix
 
     # machine specific modules
     #./modules/boot.nix
@@ -47,6 +47,11 @@
 
   programs.vim.defaultEditor = true;
   programs.fish.enable = true;
+
+
+  # System autoupgrade
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

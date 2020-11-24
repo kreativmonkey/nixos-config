@@ -6,7 +6,6 @@
 
 
     # device specific hardware configuration
-    ./users/sebastian.nix
     ./machines/pegasus.nix
     #./machines/anarchy.nix
     #./machines/bulido.nix
