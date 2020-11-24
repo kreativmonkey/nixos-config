@@ -3,7 +3,7 @@
   imports = [
 
     # device specific hardware configuration
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
 
     # the "default" emile user
     ./users/sebastian.nix
