@@ -1,8 +1,8 @@
 { ... }:
 {
   imports = [
-
     # device specific hardware configuration
+    "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/t460s"
     ./hardware-configuration.nix
 
     # the "default" emile user
@@ -12,22 +12,22 @@
     ../../roles/laptop.nix
 
     # machine specific modules
-    ./modules/boot.nix
-    ./modules/env.nix
-    ./modules/filesystem.nix
-    ./modules/firewall.nix
-    ./modules/hardware.nix 
-    ./modules/internationalisation.nix
-    ./modules/networking.nix
-    ./modules/nix.nix
-    ./modules/pkgs.nix
-    ./modules/power.nix
-    ./modules/programs.nix
-    ./modules/services.nix
-    ./modules/time.nix
-    ./modules/wireguard.nix
-    ./modules/netdata.nix
-    ./modules/location.nix
+    #./modules/boot.nix
+    #./modules/env.nix
+    #./modules/filesystem.nix
+    #./modules/firewall.nix
+    #./modules/hardware.nix 
+    #./modules/internationalisation.nix
+    #./modules/networking.nix
+    #./modules/nix.nix
+    #./modules/pkgs.nix
+    #./modules/power.nix
+    #./modules/programs.nix
+    #./modules/services.nix
+    #./modules/time.nix
+    #./modules/wireguard.nix
+    #./modules/netdata.nix
+    #./modules/location.nix
   ];
 
 
