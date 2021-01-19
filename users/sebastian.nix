@@ -1,12 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 {
 
     users.users.sebastian = {
         description = "Main user of the unit";
         isNormalUser = true;
+        createHome = true;
         hashedPassword = "$1$QIShHDeF$X3o243FuBNYyEgUha9Ois.";
         shell = pkgs.fish;
-        home = "/home/sebastian";
         # packages = [ ];
         extraGroups = [ 
             "wheel" 
