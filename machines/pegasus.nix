@@ -9,7 +9,7 @@
     ../users/sebastian.nix
 
     # import the collection of modules suited for laptops
-    ../roles/server.nix
+    ../roles/server/pegasus.nix
 
     # machine specific modules
     #./modules/boot.nix
