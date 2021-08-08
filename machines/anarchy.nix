@@ -32,6 +32,7 @@
     #./modules/power.nix
     #./modules/programs.nix
     #./modules/services.nix
+    ./modules/ssh.nix
     #./modules/time.nix
     #./modules/wireguard.nix
     #./modules/netdata.nix
@@ -106,9 +107,6 @@
      enable = true;
      enableSSHSupport = true;
   };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
