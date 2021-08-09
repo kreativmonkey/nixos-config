@@ -15,8 +15,8 @@ let
         };
     };
 
-    #privatekey = config.networking.wireguard.interfaces.wg0.privateKeyFile;
-    publickey = "${dirOf privatekey}/public";
+    privatekey = networks.wg0.privateKeyFile;
+    publickey = "${dirOf networks.wg0.privateKeyFile}/public";
 in 
 {
     networking.nat = {
