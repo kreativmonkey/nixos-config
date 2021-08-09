@@ -26,17 +26,17 @@ in
     };
 
     networking.firewall = {
-        allowedUDPPorts = [ ${networks.wg0.port} ];
+        allowedUDPPorts = [ networks.wg0.port ];
     };
 
     networking.wireguard.interfaces = {
         wg0 = {
             # Determines the IP address and subnet of the Server's end of the tunnel interface.
             #ips = [ "10.100.0.1/24" ];
-            ips = [ ${networks.wg0.IPv4} ${networks.wg0.IPv6} ];
+            ips = [ networks.wg0.IPv4 networks.wg0.IPv6 ];
 
             # The port that WireGuard listens to. Must be accessible by the client.
-            listenPort = ${networks.wg0.port};
+            listenPort = networks.wg0.port;
 
             # This allows the WireGuard server to route your traffic to the internet and hence be like a VPN
             # For this to work you have to set the dnsserver IP of your router in your clients
