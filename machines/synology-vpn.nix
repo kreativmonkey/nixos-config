@@ -10,6 +10,7 @@
 
         # import the collection of modules suited for servers
         ../roles/server/wireguardvpn.nix
+        ../roles/default.nix
 
         # TODO: Variablen nutzen für besseres handling
         #     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
@@ -32,7 +33,7 @@
         #./modules/power.nix
         #./modules/programs.nix
         #./modules/services.nix
-        ./modules/ssh.nix
+        ../modules/ssh.nix
         #./modules/time.nix
         #./modules/wireguard.nix
         #./modules/netdata.nix
