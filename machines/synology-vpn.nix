@@ -70,7 +70,7 @@
     # Changing SSH Port
     services.openssh = {
         ports = [ 2258 ];
-    }
+    };
 
     # System autoupgrade
     system.autoUpgrade.enable = true;
