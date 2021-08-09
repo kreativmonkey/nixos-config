@@ -76,6 +76,7 @@ in {
       fi
     '';
   };
+  
   systemd.paths."wireguard-wg0" = {
     pathConfig = {
       PathExists = privatekey;
