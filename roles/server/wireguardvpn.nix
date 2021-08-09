@@ -31,7 +31,6 @@ in
 
     networking.wireguard.interfaces.wg0 = {
         # Determines the IP address and subnet of the Server's end of the tunnel interface.
-        #ips = [ "10.100.0.1/24" ];
         ips = [ networks.wg0.IPv4 networks.wg0.IPv6 ];
 
         # The port that WireGuard listens to. Must be accessible by the client.
@@ -39,24 +38,6 @@ in
 
         # The private Key file for the Server.
         privateKeyFile = networks.wg0.privateKeyFile;
-
-        # This allows the WireGuard server to route your traffic to the internet and hence be like a VPN
-        # For this to work you have to set the dnsserver IP of your router in your clients
-        postSetup = ''
-            ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${networks.wg0.IPv4} -o eth0 -j MASQUERADE
-            ${pkgs.iptables}/bin/ip6tables -A FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -s ${networks.wg0.IPv6} -o eth0 -j MASQUERADE
-        '';
-
-        # This undoes the above command
-        postShutdown = ''
-            ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${networks.wg0.IPv4} -o eth0 -j MASQUERADE
-            ${pkgs.iptables}/bin/ip6tables -D FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${networks.wg0.IPv6} -o eth0 -j MASQUERADE
-        '';
-
 
         peers = [
             # List of allowed peers.
@@ -81,6 +62,24 @@ in
                 allowedIPs = [ "10.100.0.10/32" "fdc9:281f:04d7:9ee9::10/128"];
             }
         ];
+
+
+        # This allows the WireGuard server to route your traffic to the internet and hence be like a VPN
+        # For this to work you have to set the dnsserver IP of your router in your clients
+        postSetup = ''
+            ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${networks.wg0.IPv4} -o eth0 -j MASQUERADE
+            ${pkgs.iptables}/bin/ip6tables -A FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -s ${networks.wg0.IPv6} -o eth0 -j MASQUERADE
+        '';
+
+        # This undoes the above command
+        postShutdown = ''
+            ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${networks.wg0.IPv4} -o eth0 -j MASQUERADE
+            ${pkgs.iptables}/bin/ip6tables -D FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${networks.wg0.IPv6} -o eth0 -j MASQUERADE
+        '';
 
     };
 
