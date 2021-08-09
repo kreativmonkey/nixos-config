@@ -1,4 +1,4 @@
-{...}:
+{pkgs, ...}:
 let
     networks = {
         wg0 = {
