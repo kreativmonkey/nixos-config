@@ -55,7 +55,7 @@ in
                 ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${networks.wg0.IPv6} -o eth0 -j MASQUERADE
             '';
 
-            privateKeyFile = ${networks.wg0.privateKeyFile};
+            privateKeyFile = networks.wg0.privateKeyFile;
 
             peers = [
                 # List of allowed peers.
