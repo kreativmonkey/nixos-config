@@ -32,7 +32,7 @@
     #./modules/power.nix
     #./modules/programs.nix
     #./modules/services.nix
-    ./modules/ssh.nix
+    ../modules/ssh.nix
     #./modules/time.nix
     #./modules/wireguard.nix
     #./modules/netdata.nix
