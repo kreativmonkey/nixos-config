@@ -1,0 +1,14 @@
+{ ... }:
+{
+  imports = [
+    # device specific hardware configuration
+    #./hardware-configuration.nix
+
+
+    # device specific hardware configuration
+    #./machines/pegasus.nix
+    #./machines/anarchy.nix
+    #./machines/bulido.nix
+    #./machines/synology-vpn.nix
+  ];
+}

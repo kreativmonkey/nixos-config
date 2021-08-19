@@ -35,11 +35,21 @@
   networking = {
     hostName = "pegasus"; # Define your hostname.
     wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+
+
     defaultGateway = {
       address = "10.0.1.1";
       interface = "ens3";
     };
-    interfaces.ens3.ipv4.addresses = [{address = "5.9.61.183"; prefixLength = 32; }];
+    interfaces.ens3 = {
+      useDHCP = false;
+      ipv4.addresses = [{address = "5.9.61.183"; prefixLength = 32; }];
+    };
     nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
   };
   #hardware.cpu.intel.updateMicrocode = true;
