@@ -5,7 +5,7 @@ let
             IPv4 = "10.100.0.1/24";
             IPv6 = "fdc9:281f:04d7:9ee9::1/64";
             prefix = 24;
-            port = 51280;
+            port = 51820;
             privateKeyFile = "/etc/wireguard/private";
             peers = {
                 sebastianOneplus = {

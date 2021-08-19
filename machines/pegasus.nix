@@ -9,7 +9,9 @@
     ../users/sebastian.nix
 
     # import the collection of modules suited for laptops
-    ../roles/server/pegasus.nix
+    ../roles/server.nix
+    ../modules/keymap_neo.nix
+    ../location/de.nix
 
     # machine specific modules
     #./modules/boot.nix
@@ -30,10 +32,17 @@
     #./modules/location.nix
   ];
 
-  networking.hostName = "pegasus"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "pegasus"; # Define your hostname.
+    wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+    defaultGateway = {
+      address = "10.0.1.1";
+      interface = "ens3";
+    };
+    interfaces.ens3.ipv4.addresses = [{address = "5.9.61.183"; prefixLength = 32; }];
+    nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
+  };
   #hardware.cpu.intel.updateMicrocode = true;
-
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -44,10 +53,8 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.devices = [ "/dev/sda" ];
 
-
   programs.vim.defaultEditor = true;
   programs.fish.enable = true;
-
 
   # System autoupgrade
   system.autoUpgrade.enable = true;
@@ -57,5 +64,5 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 }
