@@ -1,7 +1,7 @@
 {config, pkgs, ...}:
 let
   version = "20";
-  nextcloud_host = "nx.butlr.org";
+  nextcloud_host = "nx.oc4.de";
 
   dbName = "nextcloud";
   dbUser = "nextcloud";
@@ -34,13 +34,13 @@ in
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud20; # TODO: adding version on this place
+    package = pkgs.nextcloud22; # TODO: adding version on this place
 
     hostName = nextcloud_host;
 
     # Settungs
     caching.apcu = true;
-    #maxUploadSize = "1GB";
+    maxUploadSize = "10GB";
 
 
     # Use HTTPS for links
