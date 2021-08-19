@@ -10,6 +10,7 @@
 
         # import the collection of modules suited for laptops
         ../../roles/pc.nix
+        ../location/de.nix
 
         # machine specific modules
         ./modules/boot.nix
@@ -30,14 +31,17 @@
         ./modules/location.nix
     ];
 
-
-    networking.hostName = "bulido"; # Define your hostname.
-    networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.extraHosts = ''
-        192.168.5.100 core.local
-        192.168.5.121 home.local
-        192.168.5.126 anarchy.local
-    '';
+    networking = {
+        hostName = "bulido"; # Define your hostname.
+        useDHCP = false;
+        interfaces.ens3.useDHCP = true;
+        wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+        extraHosts = ''
+            192.168.5.100 core.local
+            192.168.5.121 home.local
+            192.168.5.126 anarchy.local
+        '';
+    };
 
     hardware = {
         pulseaudio = {

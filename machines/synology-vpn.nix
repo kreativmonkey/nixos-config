@@ -11,6 +11,7 @@
         # import the collection of modules suited for servers
         ../roles/server/wireguardvpn.nix
         ../roles/default.nix
+        ../location/de.nix
 
         # TODO: Variablen nutzen für besseres handling
         #     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
