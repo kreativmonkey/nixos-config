@@ -1,6 +1,6 @@
 {config, pkgs, ...}:
 let
-    hostname = "git.butlr.org";
+    hostname = "git.oc4.de";
 
     dbUser = "gitea";
     dbName = "gitea";
@@ -71,6 +71,15 @@ in
             # visible port differs from the local listening port i.e. if port forwarding is used. 
             clonePort = 2222;
         };
+    };
+    
+    services.mysql = {
+	enable = true;
+	ensureDatabases = [ dbName ];
+	ensureUsers = [{
+		name = dbUser;
+		ensurePermissions = { "${dbName}.*" = "ALL PRIVILEGES"; };
+	}];
     };
 
     systemd.services."gitea-dump" = {

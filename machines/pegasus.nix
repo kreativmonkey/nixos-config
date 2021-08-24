@@ -14,6 +14,11 @@
     ../location/de.nix
 
     # machine specific modules
+    ../modules/nextcloud.nix
+    ../modules/letsencrypt.nix
+    ../modules/mysql.nix
+    ../modules/gitea.nix
+    #../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix
     #./modules/filesystem.nix
@@ -46,11 +51,16 @@
       address = "10.0.1.1";
       interface = "ens3";
     };
+    defaultGateway6 = {
+      address = "2a01:4f8:161:62a7:1::1";
+      interface = "ens3";
+    };
     interfaces.ens3 = {
       useDHCP = false;
       ipv4.addresses = [{address = "5.9.61.183"; prefixLength = 32; }];
+      ipv6.addresses = [{address = "2a01:4f8:161:62a7:183::1"; prefixLength = 80; }];
     };
-    nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
+    nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" "2001:4860:4860::8888" "2001:4860:4860::8844" ];
   };
   #hardware.cpu.intel.updateMicrocode = true;
 
