@@ -1,7 +1,7 @@
 {config, pkgs, ...}:
 let
-  version = "20";
-  nextcloud_host = "nx.oc4.de";
+  version = "22";
+  nextcloud_host = "www.oc4.de";
 
   dbName = "nextcloud";
   dbUser = "nextcloud";
@@ -32,15 +32,23 @@ in
     };
   };
 
+  # letsencrypt settings
+  security.acme.email = "kreativmonkey@calyrium.org";
+  security.acme.acceptTerms = true;
+
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud22; # TODO: adding version on this place
+    package = pkgs.nextcloud21; # TODO: adding version on this place
 
     hostName = nextcloud_host;
 
     # Settungs
-    caching.apcu = true;
-    maxUploadSize = "10GB";
+    caching = {
+	apcu = true;
+	memcached = true;
+	redis = false;
+    };
+    #maxUploadSize = "1024MB";
 
 
     # Use HTTPS for links
@@ -84,5 +92,14 @@ in
     #'';
   };
 
+  services.mysqlBackup.databases = 
+	if config.services.mysqlBackup.enable then
+		[ dbName ]
+	else
+		[];
+  
 
+  # Firewall settings for that module
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
