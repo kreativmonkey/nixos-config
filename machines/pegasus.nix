@@ -18,6 +18,7 @@
     ../modules/letsencrypt.nix
     ../modules/mysql.nix
     ../modules/gitea.nix
+    ../modules/fail2ban.nix
     #../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix
