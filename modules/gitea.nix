@@ -1,6 +1,6 @@
 {config, pkgs, ...}:
 let
-    hostname = "git.oc4.de";
+    hostname = "git.calyrium.org";
 
     dbUser = "gitea";
     dbName = "gitea";
@@ -27,6 +27,7 @@ in
             forceSSL = true;
             ## LetsEncrypt
             enableACME = true;
+	    serverAliases = [ "git.oc4.de" ];
 
             locations."/" = {
                 proxyPass = "http://localhost:3000";
@@ -38,7 +39,7 @@ in
         enable = true;
 
         appName = "Private Git Base";
-        rootUrl = "http://localhost:3000/";
+        rootUrl = "https://${hostname}";
         user = "gitea";
         httpPort = 3000;
         log.level = "Warn";
@@ -69,7 +70,7 @@ in
             enable = true;
             # SSH port displayed in clone URL. The option is required to configure a service when the external 
             # visible port differs from the local listening port i.e. if port forwarding is used. 
-            clonePort = 2222;
+            clonePort = 22;
         };
     };
     
