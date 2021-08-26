@@ -12,6 +12,7 @@
         enable = true;
         version = 2;
         device = "/dev/sda";
+        # Use to reduce boot size like described under https://serverfault.com/posts/997143/revisions
         configurationLimit = 3;
     };
     
