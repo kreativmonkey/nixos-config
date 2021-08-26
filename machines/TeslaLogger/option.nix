@@ -47,7 +47,7 @@ in
                 '';
     };
 
-    docker-containers = {
+    virtualisation.oci-containers.containers = {
         "teslalogger" = {
             image= "teslalogger_teslalogger";
             #imageFile = "${TL_ROOT}/docker/teslalogger/.";
