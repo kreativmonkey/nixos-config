@@ -63,7 +63,7 @@ in
                 "teslalogger-tmp:/tmp/"
             ];
             ports = [ "5010:5000" ];
-            extraDockerOptions = [ "--network=teslalogger" ];
+            extraOptions = [ "--network=teslalogger" ];
             dependsOn = [ "database" ];
             autoStart = true;
         }; # teslalogger
@@ -81,7 +81,7 @@ in
             environment = {
                 "TZ" = "Europe/Berlin";
             };
-            extraDockerOptions = [ "--network=teslalogger" ];
+            extraOptions = [ "--network=teslalogger" ];
         }; # database
 
         "grafana" = {
@@ -99,7 +99,7 @@ in
                 "${TL_ROOT}/TeslaLogger/GrafanaConfig/sample.yaml:/etc/grafana/provisioning/dashboards/dashboards.yml"
             ];
             dependsOn = [ "database" ];
-            extraDockerOptions = [ "--network=teslalogger" ];
+            extraOptions = [ "--network=teslalogger" ];
         }; # grafana
 
         "webserver" = {
@@ -115,7 +115,7 @@ in
             environment = {
                 "TZ" = "Europe/Berlin";
             };
-            extraDockerOptions = [ "--network=teslalogger" ];
+            extraOptions = [ "--network=teslalogger" ];
         }; # webserver
     };
 }
