@@ -5,6 +5,7 @@ in
 {
     # Scanner settings
     hardware.sane.enable = true;
+    nixpkgs.config.allowUnfree = true;
     
     environment.systemPackages = with pkgs; [
         # Console
