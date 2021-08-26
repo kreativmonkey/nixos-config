@@ -12,6 +12,7 @@
         enable = true;
         version = 2;
         device = "/dev/sda";
+        configurationLimit = 3;
     };
     
     networking = {
@@ -38,6 +39,9 @@
     # System autoupgrade
     system.autoUpgrade.enable = true;
     system.autoUpgrade.allowReboot = true;
+
+    # Auto garbade collection
+    nix.gc.automatic = true;
 
     # This value determines the NixOS release with which your system is to be
     # compatible, in order to avoid breaking some software such as database
