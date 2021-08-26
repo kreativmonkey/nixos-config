@@ -3,13 +3,13 @@
   imports = [
     # device specific hardware configuration
     "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/t460s"
-    ../hardware-configuration.nix
+    ../../hardware-configuration.nix
 
     # the "default" emile user
-    ../users/sebastian.nix
+    ../../users/sebastian.nix
 
     # import the collection of modules suited for laptops
-    ../roles/laptop.nix
+    ../../roles/laptop.nix
 
     # TODO: Variablen nutzen für besseres handling
     #     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
@@ -49,6 +49,8 @@
     efiSupport = true;
     enableCryptodisk = true;
     device = "nodev";
+    # Use to reduce boot size like described under https://serverfault.com/posts/997143/revisions
+    configurationLimit = 10;
   };
 
   # luks
