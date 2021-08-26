@@ -96,7 +96,7 @@ in
                 "${TL_ROOT}/TeslaLogger/GrafanaDashboards/:/var/lib/grafana/dashboards/"
                 "${TL_ROOT}/TeslaLogger/GrafanaPlugins/:/var/lib/grafana/plugins"
                 "${TL_ROOT}/TeslaLogger/GrafanaConfig/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yml"
-                "${TL_ROOT}/TeslaLogger/GrafanaConfig/sample.yaml:/etc/grafana/provisioning/dashboards/dashboards.yml";
+                "${TL_ROOT}/TeslaLogger/GrafanaConfig/sample.yaml:/etc/grafana/provisioning/dashboards/dashboards.yml"
             ];
             depends_on = [ "database" ];
             extraDockerOptions = [ "--network=teslalogger" ];
