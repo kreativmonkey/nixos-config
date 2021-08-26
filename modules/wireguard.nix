@@ -1,4 +1,6 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
+
+with lib;
 
 {
   networking = let
@@ -48,7 +50,8 @@
 
   # Generating public and private key if the key is not present
   systemd = let
-        privatekey = networking.wireguard.interfaces.wg0.privateKeyFile;
+        privatekey = config.networking.wireguard.interfaces.wg0.privateKeyFile;
+        publickey = "${dirOf privatekey}/public";
     in {
       services.wireguard-wg0-key = {
       enable = true;
