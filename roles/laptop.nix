@@ -1,4 +1,4 @@
-{ ... }:
+{pkgs, ... }:
 {
     # collection of modules that are used on every laptop configuration
     imports = [

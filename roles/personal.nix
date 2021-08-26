@@ -1,5 +1,7 @@
-{ ... }:
-
+{pkgs, ... }:
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
     # Scanner settings
     hardware.sane.enable = true;
@@ -30,21 +32,26 @@
         portfolio
         libreoffice-fresh
         pandoc
-        haskellPackages.pandoc-citeproc
-        haskellPackages.pandoc-crossref
-        texlive.combined.scheme-basic
+        # Broken packages
+        #haskellPackages.pandoc-citeproc
+        #haskellPackages.pandoc-crossref
+        texlive.combined.scheme-full
         typora
 	    firefox
         google-chrome
         kile
-
-	    syncthing-gtk
-	    bitwarden		
+        masterpdfeditor
+        zotero
+        bitwarden	
 
         # Media
         vlc
-        obs-studio
         audacity
+        ffmpeg
+        unstable.obs-studio
+        linuxPackages.v4l2loopback
+        obs-v4l2sink
+        
     ];
 
 }
