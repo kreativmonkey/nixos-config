@@ -1,13 +1,11 @@
 { pkgs, config, ... }:
 
-with lib;
-
 {
   networking = let
     ipv4 = "10.100.0.1/24";
     ipv6 = "fdc9:281f:04d7:9ee9::1/64";
     privatekey = "/etc/wireguard/private";
-    publickey = "${dirOf networks.wg0.privateKeyFile}/public";
+    publickey = "${dirOf privatekey}/public";
   in {
     nat = {
       enable = true;
@@ -50,7 +48,7 @@ with lib;
 
   # Generating public and private key if the key is not present
   systemd = let
-        privatekey = networks.wg0.privateKeyFile;
+        privatekey = networking.wireguard.interfaces.wg0.privateKeyFile;
     in {
       services.wireguard-wg0-key = {
       enable = true;
