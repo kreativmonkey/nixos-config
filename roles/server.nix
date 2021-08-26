@@ -5,7 +5,6 @@
         ./default.nix
         ../modules/podman.nix
         ../modules/ssh.nix
-        ../modules/mosh.nix
         #../modules/firewall.nix
     ];
 

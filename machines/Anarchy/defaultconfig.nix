@@ -9,7 +9,7 @@
     ../users/sebastian.nix
 
     # import the collection of modules suited for laptops
-    ../roles/personal/laptop.nix
+    ../roles/laptop.nix
 
     # TODO: Variablen nutzen für besseres handling
     #     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
@@ -17,7 +17,7 @@
     # machine specific modules
     #../modules/podman/podman.nix
     #../modules/podman/bookstack.nix
-    ../modules/home-assistant/default.nix
+    #../modules/home-assistant/default.nix
     #../modules/shinobi.nix
     #./modules/desktop.nix
     #./modules/boot.nix
@@ -32,7 +32,7 @@
     #./modules/power.nix
     #./modules/programs.nix
     #./modules/services.nix
-    ../modules/ssh.nix
+    #../modules/ssh.nix
     #./modules/time.nix
     #./modules/wireguard.nix
     #./modules/netdata.nix
@@ -87,9 +87,9 @@
     #networkmanager.dns = "none";
  
     useDHCP = false;
-    interfaces.enp0s31f6.useDHCP = true;
-    interfaces.wlp4s0.useDHCP = true;
-    interfaces.wwp0s20f0u2c2.useDHCP = true;
+    #interfaces.enp0s31f6.useDHCP = true;
+    #interfaces.wlp4s0.useDHCP = true;
+    #interfaces.wwp0s20f0u2c2.useDHCP = true;
   };
   
   # Select internationalisation properties.

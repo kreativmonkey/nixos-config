@@ -3,12 +3,14 @@
     # collection of modules that are used on every laptop configuration
     imports = [
         ./personal.nix
-    ];
+        ./default.nix
+        ../config/printer.nix
+        ../config/sound.nix
+        ../config/desktop.nix
 
-    service.paperless= {
-        enable = true;
-        ocrLanguages = [ "eng" "deu" ];
-    };
+        # Extended
+        ../modules/syncthing.nix
+    ];
 
     environment.systemPackages = with pkgs; [
         # Console

@@ -1,24 +1,17 @@
 { ... }:
 
 {
-    # collection of modules that are used on every system configuration
-    imports = [
-        ./default.nix
-        ../modules/printer.nix
-        ../modules/sound.nix
-    ];
-
     # Scanner settings
     hardware.sane.enable = true;
     
     environment.systemPackages = with pkgs; [
         # Console
-        
+	    guake        
 
         # Soicial
         discord
-        telegram
-
+        tdesktop
+        signal-desktop
 
         # Grafik
         krita
@@ -28,8 +21,10 @@
 
         # Entwicklung
         vscode
+	    geany
         openjdk
         go
+        filezilla
 
         # Office
         portfolio
@@ -39,6 +34,12 @@
         haskellPackages.pandoc-crossref
         texlive.combined.scheme-basic
         typora
+	    firefox
+        google-chrome
+        kile
+
+	    syncthing-gtk
+	    bitwarden		
 
         # Media
         vlc

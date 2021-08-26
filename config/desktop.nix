@@ -3,9 +3,9 @@
 {
 
   # Configure keymap in X11
-  services.xserver.layout = "de";
-  services.xserver.xkbVariant = "neo";
-  # services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.layout = "de,de";
+  services.xserver.xkbVariant = "neo,";
+  services.xserver.xkbOptions = "eurosign:e,terminate:ctrl_alt_bksp,caps:ctrl_modifier,grp:shifts_toggle,grp:shifts_toggle";
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver = {

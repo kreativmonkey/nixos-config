@@ -22,6 +22,9 @@
         unzip
         python3
 	    vim
+        hunspell
+        hunspellDicts.de_DE
+        hunspellDicts.en_US
     ];
 
 }
