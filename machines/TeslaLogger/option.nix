@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config,...}:
 let
     TL_ROOT = "/var/lib/TeslaLogger";
 in
@@ -64,7 +64,7 @@ in
             ];
             ports = [ "5010:5000" ];
             extraDockerOptions = [ "--network=teslalogger" ];
-            depends_on = [ "database" ];
+            dependsOn = [ "database" ];
             autoStart = true;
         }; # teslalogger
 
@@ -98,7 +98,7 @@ in
                 "${TL_ROOT}/TeslaLogger/GrafanaConfig/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yml"
                 "${TL_ROOT}/TeslaLogger/GrafanaConfig/sample.yaml:/etc/grafana/provisioning/dashboards/dashboards.yml"
             ];
-            depends_on = [ "database" ];
+            dependsOn = [ "database" ];
             extraDockerOptions = [ "--network=teslalogger" ];
         }; # grafana
 
