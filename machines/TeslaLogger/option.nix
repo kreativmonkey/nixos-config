@@ -49,8 +49,8 @@ in
 
     docker-containers = {
         "teslalogger" = {
-            image= "teslalogger";
-            imageFile = "${TL_ROOT}/docker/teslalogger/.";
+            image= "teslalogger_teslalogger";
+            #imageFile = "${TL_ROOT}/docker/teslalogger/.";
             environment = {
                 "TZ" = "Europe/Berlin";
             };
@@ -103,8 +103,7 @@ in
         }; # grafana
 
         "webserver" = {
-            image = "webserver";
-            imageFile = "${TL_ROOT}/docker/webserver/.";
+            image = "teslalogger_webserver";
             volumes = [
                 "${TL_ROOT}/docker/webserver/php.ini:/usr/local/etc/php/php.ini"
                 "${TL_ROOT}/TeslaLogger/www:/var/www/html"
