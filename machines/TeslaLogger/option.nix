@@ -80,6 +80,11 @@ in
             ports = [ "3306:3306" ];
             environment = {
                 "TZ" = "Europe/Berlin";
+                "MYSQL_USER" = "teslalogger";
+                "MYSQL_PASSWORD" = "teslalogger";
+                "MYSQL_DATABASE" = "teslalogger";
+                "MYSQL_ROOT_PASSWORD" = "teslalogger";
+
             };
             extraOptions = [ "--network=teslalogger" ];
         }; # database
