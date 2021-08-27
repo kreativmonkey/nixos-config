@@ -47,6 +47,7 @@ in
                 '';
     };
 
+    # TODO: creating teslalogger and teslalogger-webserver the nix way
     virtualisation.oci-containers.containers = {
         "teslalogger" = {
             image= "teslalogger_teslalogger";
@@ -80,11 +81,6 @@ in
             ports = [ "3306:3306" ];
             environment = {
                 "TZ" = "Europe/Berlin";
-                "MYSQL_USER" = "teslalogger";
-                "MYSQL_PASSWORD" = "teslalogger";
-                "MYSQL_DATABASE" = "teslalogger";
-                "MYSQL_ROOT_PASSWORD" = "teslalogger";
-
             };
             extraOptions = [ "--network=teslalogger" ];
         }; # database
@@ -122,5 +118,26 @@ in
             };
             extraOptions = [ "--network=teslalogger" ];
         }; # webserver
+
+        "homer" = {
+            image = "b4bz/homer:latest";
+            volumes = [
+                "/var/lib/homer:/www/assets"
+            ];
+            ports = [ "8080:8080" ];
+        };
+
+        "heimdall" = {
+            image = "ghcr.io/linuxserver/heimdall";
+            environment = {
+                "PUID" = "1000";
+                "PIGD" = "1000";
+                "TZ" = "Europe/Berlin";
+            };
+            volumes = [
+                "/var/lib/heimdall:/config"
+            ];
+            ports = [ "80:80" "443:443" ];
+        };
     };
 }
