@@ -26,9 +26,9 @@ in
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts.${nextcloud_host} = {
       ## Force HTTP redirect to HTTPS
-      forceSSL = true;
+      forceSSL = config.services.nextcloud.https;
       ## LetsEncrypt
-      enableACME = true;
+      enableACME = config.services.nextcloud.https;
     };
   };
 

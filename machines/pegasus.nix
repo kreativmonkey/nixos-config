@@ -74,12 +74,9 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.devices = [ "/dev/sda" ];
 
-  programs.vim.defaultEditor = true;
-  programs.fish.enable = true;
-
   # System autoupgrade
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.allowReboot = false;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
