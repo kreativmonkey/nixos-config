@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+    users.users.podmanager = {   
+        isNormalUser = true;
+    };
+
     virtualisation.podman = {
         enable = true;
         dockerCompat = true;
