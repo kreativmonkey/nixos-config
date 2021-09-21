@@ -21,7 +21,9 @@
     ../modules/fail2ban.nix
     ## Wait for stable
     ../modules/vikunja.nix
-
+    
+    ../modules/podman.nix
+    ../modules/mealie.nix
     #../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix

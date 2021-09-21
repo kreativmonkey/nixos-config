@@ -35,8 +35,8 @@ in
             image= "hkotel/mealie:latest";
             environment = {
                 "TZ" = "Europe/Berlin";
-                "PUID" = "1000";
-                "PGID" = "1000";
+                #"PUID" = "1000";
+                #"PGID" = "1000";
 
                 # Default Recipe Settings
                 "RECIPE_PUBLIC" = "false";
@@ -49,10 +49,8 @@ in
                 # Gunicorn
                 "WEB_CONCURRENCY" = "2";
             };
-            user = "podmanager";
-            workdir = "/home/podmanager";
             volumes = [
-                "/home/podmanager/mealie/:/app/data"
+                "${MEALIE_ROOT}/:/app/data"
             ];
             ports = [ "9925:80" ];
             autoStart = true;
