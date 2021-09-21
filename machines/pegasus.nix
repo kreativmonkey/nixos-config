@@ -11,7 +11,7 @@
     # import the collection of modules suited for laptops
     ../roles/server.nix
     ../modules/keymap_neo.nix
-    ../location/de.nix
+    ../config/location.nix
 
     # machine specific modules
     ../modules/nextcloud.nix
@@ -19,6 +19,9 @@
     ../modules/mysql.nix
     ../modules/gitea.nix
     ../modules/fail2ban.nix
+    ## Wait for stable
+    ../modules/vikunja.nix
+
     #../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix
