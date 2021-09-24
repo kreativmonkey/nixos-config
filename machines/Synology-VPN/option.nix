@@ -38,13 +38,13 @@
             publicKey = "EvpQbaR17Pal1AIo7pIZe1mVPMZqYohNdJVq9O2WJwg=";
             allowedIPs = [ "10.100.0.100/32" "fdc9:281f:04d7:9ee9::100/128" ];
         }
-        {   # Anarchy
-            publicKey = "";
-            allowedIPs = [ "10.100.0.5/32" "fdc9:281f:04d7:9ee9::5/128"];
-        }
-        {   # Server
-            publicKey = "";
-            allowedIPs = [ "10.100.0.10/32" "fdc9:281f:04d7:9ee9::10/128"];
-        }
+        #{   # Anarchy
+        #    publicKey = "";
+        #    allowedIPs = [ "10.100.0.5/32" "fdc9:281f:04d7:9ee9::5/128"];
+        #}
+        #{   # Server
+        #    publicKey = "";
+        #    allowedIPs = [ "10.100.0.10/32" "fdc9:281f:04d7:9ee9::10/128"];
+        #}
       ];
 }
