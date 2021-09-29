@@ -22,8 +22,11 @@
     ## Wait for stable
     ../modules/vikunja.nix
     
-    ../modules/podman.nix
+    ../modules/container.nix
     ../modules/mealie.nix
+    ../modules/prometheus.nix
+    ../modules/netdata.nix
+    ../modules/authentik.nix
     #../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix
