@@ -17,6 +17,7 @@
     ../modules/nextcloud.nix
     ../modules/letsencrypt.nix
     ../modules/mysql.nix
+    ../modules/postgresql.nix
     ../modules/gitea.nix
     ../modules/fail2ban.nix
     ## Wait for stable
@@ -27,7 +28,11 @@
     ../modules/prometheus.nix
     ../modules/netdata.nix
     ../modules/authentik.nix
-    #../modules/firewall.nix
+    ../modules/keycloak.nix
+    ../modules/teslamate.nix
+    ../modules/wireguard.nix
+    ../modules/bookstack.nix
+#../modules/firewall.nix
     #./modules/boot.nix
     #./modules/env.nix
     #./modules/filesystem.nix
@@ -71,6 +76,31 @@
     };
     nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" "2001:4860:4860::8888" "2001:4860:4860::8844" ];
   };
+  
+  networking.wireguard.interfaces.wg0.peers = [
+        # List of allowed peers.
+        # Feel free to give a meaning full name
+        # Public key of the peer (not a file path).
+        # publicKey = "";
+        # allowedIPs = [ "10.100.0.2/32" "fdc9:281f:04d7:9ee9::2/128" ];
+        {   # OnePlus
+            publicKey = "GbwR+pmZHsYVC/XSqomLrGlfeLpGv3uytZu9kEfwikI=";
+            allowedIPs = [ "10.100.0.3/32" "fdc9:281f:04d7:9ee9::3/128" ];
+          }
+        { # Home
+          publicKey = "/Ra34AvvbJCBqb0CsPym3loimL48K6XU6UimXgSz63A=";
+          allowedIPs = [ "10.100.0.2/32" ];
+        }
+        #{   # Anarchy
+        #    publicKey = "";
+        #    allowedIPs = [ "10.100.0.5/32" "fdc9:281f:04d7:9ee9::5/128"];
+        #}
+        #{   # Server
+        #    publicKey = "";
+        #    allowedIPs = [ "10.100.0.10/32" "fdc9:281f:04d7:9ee9::10/128"];
+        #}
+  ];
+
   #hardware.cpu.intel.updateMicrocode = true;
 
   # Use the GRUB 2 boot loader.
