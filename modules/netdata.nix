@@ -27,7 +27,7 @@
           proxy_pass          http://localhost:19999;
 
           # authentik-specific config        
-          auth_request        /akprox/auth;        
+          auth_request        /akprox/auth/nginx;        
           error_page          401 = @akprox_signin;        
           # For domain level, use the below error_page to redirect to your Authentik server with the full redirect path        
           # error_page          401 =302 https://authentik.company/akprox/start?rd=$scheme://$http_host$request_uri;
