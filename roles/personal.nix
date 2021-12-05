@@ -9,7 +9,8 @@ in
     
     environment.systemPackages = with pkgs; [
         # Console
-	    guake        
+	guake        
+	mosh
 
         # Soicial
         discord
@@ -21,29 +22,33 @@ in
         gimp
         inkscape
         darktable
+        flameshot
 
         # Entwicklung
         vscode
-	    geany
+	geany
         openjdk
         go
         filezilla
 
         # Office
-        portfolio
+        unstable.portfolio
         libreoffice-fresh
         pandoc
         # Broken packages
         #haskellPackages.pandoc-citeproc
         #haskellPackages.pandoc-crossref
         texlive.combined.scheme-full
-        typora
-	    firefox
+        #typora # removed by 21.11
+        firefox
         google-chrome
         kile
         masterpdfeditor
         zotero
         bitwarden	
+
+        # Productivity
+        barrier
 
         # Media
         vlc
@@ -51,8 +56,7 @@ in
         ffmpeg
         unstable.obs-studio
         linuxPackages.v4l2loopback
-        obs-v4l2sink
-        
+        gnome-network-displays
     ];
 
 }
