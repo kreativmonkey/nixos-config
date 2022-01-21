@@ -2,7 +2,7 @@
 {
     # collection of modules that are used on every system configuration
     imports = [
-
+      ../modules/vim.nix
     ];
 
     # Installing Fish Shell - Smart and user-friendly command line shell
@@ -21,12 +21,26 @@
         tmux
         unzip
         python3
-        vim
         hunspell
         hunspellDicts.de_DE
         hunspellDicts.en_US
         mosh
-    ];
+        chezmoi # dotfilemanager
+
+        # Konsole
+        lsd
+        fzf
+        bat
+        dust
+        duf
+        fd
+        mcfly
+        cheat
+        bottom
+        zoxide
+        fishPlugins.fzf-fish
+        exa
+      ];
 
     programs.neovim = {
         enable = true;
