@@ -27,7 +27,9 @@
   
   # Gnome 3
   services.gnome = {
-	  gnome-keyring.enable = true;
+          gnome-user-share.enable= true;
+          gnome-settings-daemon.enable=true;
+          gnome-keyring.enable = true;
 	  sushi.enable = true; # quick previewer for nautilus
 	  games.enable = false;
 	  chrome-gnome-shell.enable = true; # installing extensions from browser
@@ -36,4 +38,9 @@
   
   environment.gnome.excludePackages = [ pkgs.gnome.geary pkgs.gnome.cheese ];
 
+  environment.systemPackages = with pkgs; [
+    gnome.gnome-tweaks
+    gnome-network-displays
+    gnomeExtensions.gsconnect
+  ];
 }

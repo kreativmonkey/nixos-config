@@ -10,7 +10,7 @@ in
 	systemService = true;
 	dataDir = "/home/${username}";
 	configDir = "/home/${username}/.config/syncthing";
-	declarative.folders = {
+	folders = {
 		"/home/${username}/Sync" = {
 				id = "default";
 				label = "Default";
@@ -18,7 +18,7 @@ in
 				path = "/home/${username}/Sync";
 				type = "sendreceive"; # one of "sendreceive", "sendonly", "receiveonly"
 				watch = true;
-				devices = [ "DataCore" ];
+				devices = [ "DataCore" "AnarchyBig"];
 	   };
 	   "/home/${username}/Dokumente" = {
 				id = "Dokumente";
@@ -27,21 +27,21 @@ in
 				path = "/home/${username}/Dokumente";
 				type = "sendreceive"; # one of "sendreceive", "sendonly", "receiveonly"
 				watch = true;
-				devices = [ "DataCore" ];
+				devices = [ "DataCore" "AnarchyBig" ];
 	   }; 
 	}; # declarative.folder
-	declarative.devices = {
+	devices = {
 			"DataCore" = {
 				name = "DataCore";
-				id = "NE6FUNT-S24QVT4-4SNAYDM-SXMJIPM-M7IRLLC-6XNBT7S-VZMTLSN-SQETCQE";
+				id = "Q67GOCQ-Z5FXLOR-CZQKFTW-SAQMJ3G-4OUFV3B-4KYX3HU-GJGEEQE-5ZAHJQU";
 				addresses = [];
 				introducer = true;
 			};
-			#"AnarchyBig" = {
-			#	name = "AnarchyBig";
-			#	id = "XTTR4AX-XFVEO64-GCMHZSD-R7TSK7N-3I3ORXG-2ZX7CJP-35TLSH2-6G6GBA7";
-			#	addresses = [];
-			#};
+			"AnarchyBig" = {
+				name = "AnarchyBig";
+				id = "XTTR4AX-XFVEO64-GCMHZSD-R7TSK7N-3I3ORXG-2ZX7CJP-35TLSH2-6G6GBA7";
+				addresses = [];
+			};
 	}; # declarative.devices
   };
 

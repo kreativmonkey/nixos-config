@@ -15,6 +15,7 @@
     #     (import <mobile-nixos/lib/configuration.nix> { device = "xxx-yyy"; })
 
     # machine specific modules
+    ../../modules/podman.nix
     #../modules/podman/podman.nix
     #../modules/podman/bookstack.nix
     #../modules/home-assistant/default.nix
@@ -56,7 +57,7 @@
   # luks
   boot.initrd.luks.devices = {
 	crypted = {
-		device = "/dev/disk/by-uuid/86a9b8c1-ef3f-442d-bf8d-c3e3ba7d67b1";
+		device = "/dev/disk/by-uuid/d129b2f1-7b7d-48b5-97a2-efcf3896f6c4";
 		preLVM = true;
 	};
   };
@@ -122,5 +123,5 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 }

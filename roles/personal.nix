@@ -6,11 +6,12 @@ in
     # Scanner settings
     hardware.sane.enable = true;
     nixpkgs.config.allowUnfree = true;
-    
+
     environment.systemPackages = with pkgs; [
         # Console
-	guake        
-	mosh
+	    guake        
+	    mosh
+        nerdfonts
 
         # Soicial
         discord
@@ -26,10 +27,11 @@ in
 
         # Entwicklung
         vscode
-	geany
+    	geany
         openjdk
         go
         filezilla
+        jupyter
 
         # Office
         unstable.portfolio
@@ -56,7 +58,6 @@ in
         ffmpeg
         unstable.obs-studio
         linuxPackages.v4l2loopback
-        gnome-network-displays
-    ];
+      ];
 
 }
